@@ -133,7 +133,7 @@ disable sshd and only start it manually before expected use
 **Replace HOSTNAME with desired hostname for the machine** (e.g. foo)
 
 ```console
-hostname 'HOSTNAME'
+# hostname 'HOSTNAME'
 ```
 
 ## Gateway
@@ -142,7 +142,7 @@ hostname 'HOSTNAME'
   `192.168.1.1` or `10.0.2.1`)
 
 ```console
-echo -e 'GATEWAYS' > /etc/mygate
+# echo -e 'GATEWAYS' > /etc/mygate
 ```
 
 ## Static address
@@ -421,7 +421,7 @@ $ doas useradd -m repos
 Find drive information
 
 ```console
-sysctl hw.disknames
+$ sysctl hw.disknames
 ```
 
 Detailed information about a storage device
@@ -480,7 +480,7 @@ Sign in to X through xenodm as the non-root user
 Language input methods in ibus-setup
 
 ```console
-ibus-setup
+$ ibus-setup
 ```
 
 Add desired input methods from the `Input Method` tab by selecting them from

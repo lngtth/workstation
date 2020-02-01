@@ -241,13 +241,7 @@ DUMP_FLAG FSCK_PASS_FLAG
 
 ```console
 # mkdir /etc/apm
-```
-
-```console
 # echo -e '#!/bin/sh\npkill -USR1 xidle' > /etc/apm/suspend
-```
-
-```console
 # chmod +x /etc/apm/suspend
 ```
 

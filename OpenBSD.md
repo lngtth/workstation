@@ -428,7 +428,8 @@ $ doas disklabel DISK_NAME
 
 Create a mount point for the partition and mount it
 
-**Replace DISK_PARTITION with target disk + partition letter** (e.g. `sd1i`)
+**Replace DISK_PARTITION with target disk partition entry in /dev** (e.g. 
+`/dev/sd1i`)
 
 ```console
 $ doas mkdir -p /mnt/pen

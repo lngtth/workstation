@@ -348,59 +348,20 @@ $ pkg_info -Q PACKAGE_NAME
 
 ## Install packages
 
-Some packages to start with
+Window manager and related packages
 
 ```console
-$ doas pkg_add \
-  htop \
-  python \
-  go \
-  git \
-  colorls \
-  vim \
-  mpd \
-  ncmpcpp \
-  mpv \
-  ranger \
-  feh \
-  neomutt \
-  w3m \
-  rxvt-unicode \
-  ibus-anthy \
-  awesome \
+$ doas pkg_add -y \
+  bspwm \
+  sxhkd \
   unclutter \
 ```
 
-Choose a package when the base name is ambiguous
-
-- python -> python-3.7.4
-- vim -> vim-8.1.2061-gtk3
-- neomutt -> neomutt-20180716p1-gpgme
-- w3m -> w3m-0.5.3p8-image
-
-## Language
+## Install git for cloned repos
 
 ```console
-$ doas pkg_add \
-  ja-fonts-gnu \
-  ja-sazanami-ttf \
-  noto-cjk \
+$ doas pkg_add -y git
 ```
-
-## Other fonts
-
-```console
-$ doas pkg_add \
-  comic-neue \
-  font-awesome \
-  inconsolata-font \
-```
-
-<!--TODO
-Twemoji
-CC Wild Words
-Update font paths
--->
 
 ## Create user for cloned repos
 
@@ -408,11 +369,11 @@ Update font paths
 $ doas useradd -m repos
 ```
 
-## Mounting portable drives
+## Mounting portable storage devices
 
 *Reading: `man disklabel`, `man mount`*
 
-Find drive information
+Find information about storage devices
 
 ```console
 $ sysctl hw.disknames
@@ -420,21 +381,23 @@ $ sysctl hw.disknames
 
 Detailed information about a storage device
 
-**Replace DISK_NAME with the target disk** (e.g. `sd1`)
+**Replace DEVICE_NAME with the target device** (e.g. `sd1`)
 
 ```console
-$ doas disklabel DISK_NAME
+$ doas disklabel DEVICE_NAME
 ```
 
 Create a mount point for the partition and mount it
 
-**Replace DISK_PARTITION with target disk partition entry in /dev** (e.g. 
-`/dev/sd1i`)
+**Replace MOUNT_POINT with a path to mount to** (e.g. `/media/pen`)
+
+**Replace DEVICE_PARTITION with target device partition entry in /dev or duid 
+  from disklabel** (e.g. `/dev/sd1i`)
 
 ```console
-$ doas mkdir -p /mnt/pen
-$ doas chown USER_NAME:USER_NAME /mnt/pen
-$ doas mount DISK_PARTITION /mnt/pen
+$ doas mkdir -p MOUNT_POINT
+$ doas chown USER_NAME:USER_NAME MOUNT_POINT
+$ doas mount Device_PARTITION MOUNT_POINT
 ```
 
 ## Add personal and authorized keys (ssh, gpg, etc)
@@ -455,7 +418,13 @@ Add custom style for xenodm
 $ doas /home/repos/github/lngtth/dotfiles/plain_xenodm.sh
 ```
 
-Add dotfiles (run as the user to install them for)
+Add system packages (including ibus and fonts for languages)
+
+```console
+$ doas /home/repos/github/lngtth/dotfiles/packages.sh
+```
+
+Add dotfiles
 
 ```console
 $ /home/repos/github/lngtth/dotfiles/install.sh
@@ -470,9 +439,8 @@ $ doas rcctl start xenodm
 
 Sign in to X through xenodm as the non-root user
 
-## GUI configuration
-
-Language input methods in ibus-setup
+<!--TODO Do ibus setup automatically and move entirely to dotfiles-->
+## Language input methods in ibus-setup
 
 ```console
 $ ibus-setup

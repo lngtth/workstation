@@ -44,7 +44,7 @@ Sign in as root after rebooting
 Inspect rc.conf for services configured by default in this release
 
 ```console
-# cat /etc/rc.conf | less
+# less /etc/rc.conf
 ```
 
 Services enabled by default in 6.6

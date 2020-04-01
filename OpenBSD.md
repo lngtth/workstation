@@ -85,7 +85,7 @@ and spamlogd can be disabled here
 
 I like to change standard services to use non-standard ports when possible
 
-**Replace NON_STANDARD_PORT with preferred ssh port** (e.g. `2222`)
+**Replace NON_STANDARD_PORT with preferred ssh port** (e.g. `222`)
 
 ```console
 # echo 'Port NON_STANDARD_PORT' >> /etc/ssh/sshd_config
